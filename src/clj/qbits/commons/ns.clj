@@ -1,4 +1,4 @@
-(ns qbits.commons.alias
+(ns qbits.commons.ns
   "Borrowed from flatland.useful.ns
   https://github.com/flatland/useful/blob/develop/src/flatland/useful/ns.clj
   Eclipse Public License - v 1.0")
