@@ -1,11 +1,12 @@
 (ns qbits.commons.enum
-  (:require [clojure.string :as str]))
+  (:require
+   [clojure.string :as str]
+   [qbits.commons.string :as s]))
 
 (defn format-key
   [k]
   (-> k
-      str/lower-case
-      (str/replace "_" "-")
+      s/camel->dashed
       keyword))
 
 (defn enum->map
