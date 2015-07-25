@@ -36,3 +36,21 @@
                   (partition 2 clauses))
           (when (odd? (count clauses))
             (list (last clauses)))))))
+
+(defmacro enum->fn
+  "Like enum->map but > 6x faster and throws on invalid enum values
+  instead of just returning nil"
+  [enum-symbol]
+  (let [enum (eval enum-symbol)
+        enum-map (enum->map enum)]
+    `(fn [x#]
+       (case
+           x#
+         ~@(mapcat (fn [[k ^Enum e]]
+                     [k (symbol (format "%s/%s"
+                                        enum-symbol
+                                        (.name e)))])
+                   enum-map)
+         (throw (ex-info (format "Invalid Enum key - possible keys are:  %s"
+                                 ~(str/join ", " (map key enum-map)))
+                         {:type  ::invalid-enum-value}))))))
