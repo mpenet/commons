@@ -33,6 +33,7 @@
        ~@(concat
           (mapcat (fn [[test result]]
                     [(eval (enum-ordinal test)) result])
+                  (partition 2 clauses))
           (when (odd? (count clauses))
             (list (last clauses)))))))
 
