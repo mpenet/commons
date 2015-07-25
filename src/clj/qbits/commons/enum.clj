@@ -33,12 +33,11 @@
        ~@(concat
           (mapcat (fn [[test result]]
                     [(eval (enum-ordinal test)) result])
-                  (partition 2 clauses))
           (when (odd? (count clauses))
             (list (last clauses)))))))
 
 (defmacro enum->fn
-  "Like enum->map but > 6x faster and throws on invalid enum values
+  "Like enum->map but >6x faster and throws on invalid enum values
   instead of just returning nil"
   [enum-symbol]
   (let [enum (eval enum-symbol)
@@ -47,10 +46,10 @@
        (case
            x#
          ~@(mapcat (fn [[k ^Enum e]]
-                     [k (symbol (format "%s/%s"
-                                        enum-symbol
-                                        (.name e)))])
+                     [k (->> (.name e)
+                             (str enum-symbol "/")
+                             symbol)])
                    enum-map)
-         (throw (ex-info (format "Invalid Enum key - possible keys are:  %s"
-                                 ~(str/join ", " (map key enum-map)))
+         (throw (ex-info ~(format "Invalid Enum key - possible keys are -> %s"
+                                  (str/join ", " (map key enum-map)))
                          {:type  ::invalid-enum-value}))))))
