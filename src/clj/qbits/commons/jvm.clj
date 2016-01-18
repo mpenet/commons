@@ -17,7 +17,8 @@
   `then`.  Else expand to `else`.
   (compile-if (Class/forName \"java.util.concurrent.ForkJoinTask\")
     (do-cool-stuff-with-fork-join)
-    (fall-back-to-executor-services))"
+    (fall-back-to-executor-services))
+  Taken from https://github.com/clojure/clojure/blob/master/src/clj/clojure/core/reducers.clj#L24"
   [exp then & [else]]
   (if (try (eval exp)
            (catch Throwable _ false))
