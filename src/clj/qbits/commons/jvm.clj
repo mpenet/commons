@@ -24,3 +24,15 @@
            (catch Throwable _ false))
     `(do ~then)
     `(do ~else)))
+
+(defmacro compile-if-ns-exists
+  [n then & [else]]
+  `(compile-if (find-ns (quote ~n))
+               ~then
+               ~else))
+
+(defmacro compile-if-class-exists
+  [k then & [else]]
+  `(compile-if (Class/forName ~(str k))
+               ~then
+               ~else))
