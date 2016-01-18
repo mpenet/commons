@@ -27,7 +27,9 @@
 
 (defmacro compile-if-ns-exists
   [n then & [else]]
-  `(compile-if (find-ns (quote ~n))
+  `(compile-if (try (require (quote ~n))
+                    true
+                    (catch Exception _# nil))
                ~then
                ~else))
 
