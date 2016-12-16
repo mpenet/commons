@@ -14,7 +14,7 @@ commons is [available on Clojars](https://clojars.org/cc.qbits/commons).
 Add this to your dependencies:
 
 ```clojure
-[cc.qbits/commons "0.4.5"]
+[cc.qbits/commons "0.4.6"]
 ```
 
 Please check the
