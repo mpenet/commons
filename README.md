@@ -8,7 +8,7 @@ commons is [available on Clojars](https://clojars.org/cc.qbits/commons).
 Add this to your dependencies:
 
 ```clojure
-[cc.qbits/commons "0.5.0"]
+[cc.qbits/commons "0.5.1"]
 ```
 
 ## License
