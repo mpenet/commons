@@ -1,5 +1,6 @@
 # commons
-<!-- [![Build Status](https://secure.travis-ci.org/mpenet/commons.png?branch=master)](http://travis-ci.org/mpenet/commons) -->
+
+[![cljdoc badge](https://cljdoc.xyz/badge/cc.qbits/commons)](https://cljdoc.xyz/d/cc.qbits/commons/CURRENT)
 
 ## Installation
 
