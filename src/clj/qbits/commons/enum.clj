@@ -1,6 +1,7 @@
 (ns qbits.commons.enum
   (:require
    [clojure.string :as str]
+   [clojure.spec.alpha :as spec]
    [qbits.commons.string :as s]))
 
 (defn format-key
@@ -16,6 +17,15 @@
      (assoc m (format-key (.name ^Enum hd)) hd))
    {}
    (java.util.EnumSet/allOf enum)))
+
+(defn enum->set [enum]
+  (into #{}
+        (map #(format-key (.name ^Enum %)))
+        (java.util.EnumSet/allOf enum)))
+
+(defmacro defspec
+  [k enum]
+  `(spec/def ~k ~(enum->set (eval enum))))
 
 (defn fields->map
   [^Object cls]
