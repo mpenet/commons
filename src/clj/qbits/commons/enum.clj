@@ -64,7 +64,6 @@
   ([enum-symbol & [ns]]
    (let [enum (eval enum-symbol)
          enum-map (enum->map enum ns)]
-     (prn enum-map)
      `(fn [x#]
         (case
             x#
