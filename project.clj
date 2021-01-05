@@ -1,4 +1,4 @@
-(defproject cc.qbits/commons "1.0.0-alpha4-SNAPSHOT"
+(defproject cc.qbits/commons "1.0.0-alpha4"
   :description "Stuff"
   :url "https://github.com/mpenet/commons"
   :license {:name "Eclipse Public License"
