@@ -74,4 +74,5 @@
                     enum-map)
           (throw (ex-info ~(format "Invalid Enum key - possible keys are -> %s"
                                    (str/join ", " (map key enum-map)))
-                          {:type  ::invalid-enum-value})))))))
+                          {:type  ::invalid-enum-value
+                           :key x#})))))))
