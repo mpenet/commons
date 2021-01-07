@@ -72,7 +72,9 @@
                               (str enum-symbol "/")
                               symbol)])
                     enum-map)
-          (throw (ex-info ~(format "Invalid Enum key - possible keys are -> %s"
-                                   (str/join ", " (map key enum-map)))
-                          {:type  ::invalid-enum-value
-                           :key x#})))))))
+          (throw (ex-info
+                  (format "Invalid Enum key - %s - possible keys are -> %s"
+                          x#
+                          ~(str/join ", " (map key enum-map)))
+                  {:type  ::invalid-enum-value
+                   :key x#})))))))
