@@ -7,4 +7,13 @@
   :dependencies [[org.clojure/clojure "1.10.1"]
                  [org.clojure/spec.alpha "0.2.176"]]
   :source-paths ["src/clj"]
-  :global-vars {*warn-on-reflection* true})
+  :global-vars {*warn-on-reflection* true}
+
+  :release-tasks [["vcs" "assert-committed"]
+                  ["change" "version" "leiningen.release/bump-version" "release"]
+                  ["vcs" "commit"]
+                  ["vcs" "tag" "--no-sign"]
+                  ["deploy" "clojars"]
+                  ["change" "version" "leiningen.release/bump-version"]
+                  ["vcs" "commit"]
+                  ["vcs" "push"]])
